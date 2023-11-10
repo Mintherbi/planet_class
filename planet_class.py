@@ -1,38 +1,40 @@
 import bpy
 from mathutils import Vector
 
+G = 6.6740831e-11
+
 class planet(bpy.ops.mesh):
     def __init__(self, radius, location, velocity, mass):
-        self.object = 
+        self.object = bpy.ops.mesh.primitive_uv_sphere_add(radius = radius)
+        self.object.location = location
+        self.velocity = velocity
+        self.mass = mass
+        
+    def update_path(orbits):
+        pass
+
+    def force(self, planet):
+        dir = self.object.location - planet.
+    
+
+        
 
 
 
-#get first object and arbitrary location
-bpy.ops.mesh.primitive_uv_sphere_add(radius=2)
-o1 = bpy.context.active_object
-o1.location.x = -5
+orbits = []
 
-#same for second one
-bpy.ops.mesh.primitive_uv_sphere_add(radius=1)
-o2 = bpy.context.active_object
-o2.location.x = 10
 
-#define constants: G and masses
-G = 6.6740831e-11
-m1 = 1e+11
-m2 = 1e+05
 
-#initial speeds
-v1 = Vector( ( 0, 0.01, 0 ) )
-v2 = Vector( ( 0, -0.5, 0 ) )
+
+
 
 #frame rate for calculation
 frame_rate = 1 #24 (normally 24 but 1 is faster)
 seconds_per_frame = 1 / frame_rate
 
-def two_bodies(scene):
+def n_bodies(scene):
     #import globals in the function scope
-    global o1, o2, G, m1, m2, v1, v2
+    global G
     global seconds_per_frame
     
     #calc current direction between the objects
