@@ -10,20 +10,16 @@ class planet(bpy.ops.mesh):
         self.velocity = velocity
         self.mass = mass
         
-    def update_path(orbits):
-        pass
+    def update_path(s):
+        self.velocity = self.velocity - s.velocity
 
-    def force(self, planet):
-        dir = self.object.location - planet.
+    def direction(self, planet):
+        dir = self.object.location - planet.location
+        return dir
     
+    def force():
 
-        
-
-
-
-orbits = []
-
-
+    
 
 
 
