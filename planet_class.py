@@ -1,6 +1,12 @@
 import bpy
 from mathutils import Vector
 
+class planet(bpy.ops.mesh):
+    def __init__(self, radius, location, velocity, mass):
+        self.object = 
+
+
+
 #get first object and arbitrary location
 bpy.ops.mesh.primitive_uv_sphere_add(radius=2)
 o1 = bpy.context.active_object
