@@ -39,8 +39,6 @@ class system(planet):
         acc = direction * (self.G * other_planet.mass/ d_squared) 
         return acc
 
-
-
 for i in range(5):
     orbit = []
     orbit.append(planet(radius=rand.randrange(1,3), 
@@ -51,9 +49,8 @@ sys = system(orbit,1)
 
 def n_bodies(scene):
     global sys
-
+    planets =[]
     planets = sys.update()
-
     planets
 
 
