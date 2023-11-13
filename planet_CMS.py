@@ -13,8 +13,8 @@ class Planet:
         self.mass = 10**radius
         
     def update(self, acc, rate):
-        self.velocity =- acc * rate
-        self.location =+ i.velocity * rate
+        self.velocity -= acc * rate
+        self.location += self.velocity * rate
 
 
 class system(Planet):
@@ -26,11 +26,10 @@ class system(Planet):
 
     def update(self):
         for i in self.system:
-            acc = Vector(0,0,0)
-            for j in self.system.remove(i):
-                acc =+ self.acc(j)
-            i.update(acc, self.seconds_per_frame)
-        return self.system
+            acc = Vector((0,0,0))
+            for j in self.system.pop(i):
+                acc += self.acc(self.system[j])
+            self.system[i].update(acc, self.seconds_per_frame)
     
     def acc(self, other_planet):
         direction = other_planet.object.location - self.object.location
@@ -39,8 +38,9 @@ class system(Planet):
         acc = direction * (self.G * other_planet.mass/ d_squared) 
         return acc
 
-for i in range(5):
-    orbit = []
+orbit = []
+
+for i in range(3):
     orbit.append(Planet(radius=rand.randrange(1,3), 
                      location=Vector((rand.randrange(-10,10),rand.randrange(-10,10),rand.randrange(-10,10))), 
                      velocity=Vector((rand.randrange(-1,1),rand.randrange(-1,1), rand.randrange(-1,1)))))
@@ -50,6 +50,7 @@ sys = system(orbit,1)
 def n_bodies(scene):
     global sys
     sys.update()
+    sys.system
 
 
 #get rid of previously set frame_change_pre handlers (if not the same handler may be fired n times)
