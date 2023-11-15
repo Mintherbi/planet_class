@@ -34,7 +34,7 @@ class System:
         return self.system
 
 
-# Create a system with 5 planets
+# Create a system with n planets
 orbit = [Planet(radius=rand.randrange(2, 5),
                 location=Vector((rand.randrange(-20, 20), rand.randrange(-20, 20), rand.randrange(-20, 20))),
                 velocity=Vector((rand.random()*2-1, rand.random()*2-1, rand.random()*2-1)))
